@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "catalog",
-    "accounts",
+    # "accounts",
 ]
 
 MIDDLEWARE = [
@@ -132,6 +132,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 AUTH_USER_MODEL = "catalog.Author"
+
+
+LOGIN_REDIRECT_URL = "/catalog/"
 
 
 INTERNAL_IPS = [

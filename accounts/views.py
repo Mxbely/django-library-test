@@ -14,11 +14,11 @@ def login_view(request: HttpRequest) -> HttpResponse:
     elif request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return render(request, "catalog/index.html")
-            # return HttpResponseRedirect(reverse("catalog:index"))
+            # return render(request, "catalog/index.html")
+            return HttpResponseRedirect(reverse("catalog:index"))
         else:
             error_context = {
                 "error": "Invalid username or password",
@@ -28,4 +28,7 @@ def login_view(request: HttpRequest) -> HttpResponse:
 
 def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
+
     return render(request, "registration/logged_out.html")
+    # return render(request, "catalog/index.html")
+    # return HttpResponse(request, "catalog/index.html")
